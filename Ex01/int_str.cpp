@@ -1,72 +1,75 @@
-//int.str.cpp
-
-#include <iostream>
+#include <cstdlib> // for free
+#include <iostream> // for std::cout, std::endl and <<
 #include "int_str.h"
-
-char* intToStr(int i){
-  int count=0;
-  int j = 0;
-  int temp=0;
-  char* p;
-  int check=0;
-  check = i;
-  while (1) {
-    if(check != 0){
-      count++;
-      check = check / 10;
+char* intToStr(int inum){
+    int i = 0;
+    int num[10];
+    int temp;
+    temp = inum;
+    if(inum > 0){
+        while(temp >= 1){
+            i++;
+            temp = temp/10;
+        }
+        char* c = (char*)malloc(i * sizeof(char));
+        int j = i - 1;
+        i = 0;
+        while(inum >= 1){
+            num[i] = inum % 10;
+            c[j] = num[i] + '0';
+            inum = inum / 10;
+            i++;
+            j--;
+        }
+        return c;
+    }
+    else if(inum == 0){
+        char* c = (char*)malloc(1 * sizeof(char));
+        c[0] = '0';
+        return c;
     }
     else{
-        break;
+        while(temp <= -1){
+            i++;
+            temp = temp / 10;
+        }
+        char* c = (char*)malloc((i+1) * sizeof(char));
+        int j = i;
+        i = 0;
+        while(inum <= -1){
+            num[i] = (inum % 10) * -1;
+            c[j] = num[i] + '0';
+            inum = inum / 10;
+            i++;
+            j--;
+        }
+        c[0] = '-';
+        return c;
     }
-  }
-  int num[count];
-  while(1){
-    if(i/10 != 0){
-      temp  = (i%10);
-      num[j] = temp;
-      i = i / 10;
-      j++;
-    }
-    else{
-      break;
-    }
-  }
-  p = (char*) malloc( sizeof(char) * (j));
-  int k=0;
-  count = 0;
-  for(k=j-1;k>=0;k--){
-    p[count] = ((char)num[k]+'0');
-    count++;
-  }
-  return p;
 }
 
 int strToInt(char* c){
-  int j = 0;
-  int sum = 0;
-  int pwr = 1;
-  while(1){
-    if(c[j] != '\n'){
-      std::cout << c[j] << ' ';
-      j++;
+    int pwr = 1;
+    int sum = 0;
+    int i = 0;
+    while(c[i] != '\0'){
+        i++;
+    }
+    int j;
+    j = i - 1;
+    if(c[0] == '-'){
+        while(j > 0){
+            sum = sum + ('0' - c[j]) * pwr;
+            pwr = pwr*10;
+            j--;
+        }
     }
     else{
-      std::cout << std::endl;
-      std::cout << std::endl;
-      break;
+        while(j > -1){
+            sum = sum + (c[j] - '0') * pwr;
+            pwr = pwr*10;
+            j--;
+        }
     }
-  }
-  while(1){
-    //j--;
-    if(j>=0){
-      std::cout << j <<' ';
-      sum = sum + (c[j]-48)*pwr;
-      pwr = pwr*10;
-      j--;
-    }
-    else{
-      break;
-    }
-  }
-  return sum;
+    return sum;
 }
