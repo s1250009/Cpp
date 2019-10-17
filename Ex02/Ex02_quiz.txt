@@ -1,0 +1,106 @@
+Exercise 2
+Question 1: An array-based stack (70 points)
+Deadline for this question: next week.
+
+A stack is a data-structure where data is added and removed from the top. Stacks are also called LIFO for: Last In First Out. The goal of this question is to implement a stack data-structure using an array (of a maximum fixed size) for storing the elements. The elements in the stack will have the type int.
+
+Create three files: stack.h, stack.cpp, test_stack.cpp
+
+Step 1: Create the Stack data-structure in the file stack.h
+
+
+#ifndef STACK_H
+#define STACK_H
+
+class Stack {
+public:
+ Stack(int max_size) : _max_size(max_size), 
+   _top(-1), _data(new int[max_size]) {}
+
+ ~Stack() { delete[] _data; }
+
+ // interface
+ 
+ // check whether the stack is empty
+ bool empty();
+
+ // check whether the stack is full
+ bool full();
+
+ // return the number of elements
+ int size();
+
+ // insert element on top
+ // print an error message on std::cerr when overflow
+ void push(int);
+
+ // remove element on top
+ // print an error message on std::cerr when underflow
+ void pop();
+
+ // acces the topmost element
+ int top();
+
+private:
+  int _max_size;
+  int _top;
+  int* _data;
+
+};
+#endif 
+Step 2: Implement the methods in the file stack.cpp
+
+Step 3: Test your implementation with the following main function
+
+// test_stack.cpp
+#include <cassert>
+#include "stack.h"
+
+int main(void) {
+  Stack stack(100);
+
+  for (int i = 0; i < 40; ++i) {
+    stack.push(i);
+  }
+
+  assert(stack.full() == false);
+
+  int i = 39;
+  while (!stack.empty()) {
+    int element = stack.top();
+    assert(element == i);
+    stack.pop();
+    i = i - 1;
+  }
+
+  return 0;
+}
+Question 2: Streams (30 points)
+Deadline for this question: next week.
+
+Download the data file. It contains the following data
+
+
+  11 2.154
+  235 1.3567
+  9 2.5
+  15 111.1234
+  7 1.0002    
+The goal of the question is to write a program that reads the data from this file using streams (filestreams) and prints the data in a table as follows:
+
+
+---------------------+--------------------+---------------------  
+                   1 |                 11 |                2.154
+                   2 |                235 |               1.3567
+                   3 |                  9 |                  2.5
+                   4 |                 15 |             111.1234
+                   5 |                  7 |               1.0002    
+You can make the following assumptions:
+
+The number of columns in the input data file is fixed and equal to 2
+The width of each column is fixed and equal to 20
+In the input data file, the numbers in the first column have the type int, and the numbers in the second column have the type double
+Some hints:
+
+Use a file stream to read the input data
+Use io manipulators to set keep the width of each column
