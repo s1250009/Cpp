@@ -4,7 +4,7 @@
 class Date {
 public:
   Date() {}
-  void set(int m, int d, int y) const;
+  void set(const int m,const int d,const int y);
   void print();
   int get_month();
   int get_day();
@@ -12,5 +12,9 @@ public:
 private:
   int month, day, year;
 };
+
+/*inline int Date::get_month(){}
+inline int Date::get_day(){}
+inline int Date::get_year(){}*/
 
 #endif
