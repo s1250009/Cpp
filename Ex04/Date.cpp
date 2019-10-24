@@ -16,14 +16,14 @@ void Date::print() {
   std::cout << year << "year " << month << "month " << day << "days" << std::endl;
 }
 
-int Date::get_month() {
+inline int Date::get_month() {
   return month;
 }
 
-int Date::get_year() {
+inline int Date::get_year() {
   return year;
 }
 
-int Date::get_day() {
+inline int Date::get_day() {
   return day;
 }

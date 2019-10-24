@@ -13,8 +13,4 @@ private:
   int month, day, year;
 };
 
-/*inline int Date::get_month(){}
-inline int Date::get_day(){}
-inline int Date::get_year(){}*/
-
 #endif
