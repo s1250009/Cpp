@@ -1,7 +1,6 @@
 // ArrayStack.h
 
 #include <string>
-
 #include <iostream>
 
 #ifndef ARRAY_STACK_H
@@ -29,15 +28,28 @@ class ArrayStack {
 
 public:
     // Constructors:
-    ArrayStack(){}
+    ArrayStack(){
+      _num_items = 0;
+      _allocated_size = 0;
+      _items = nullptr;
+    }
     /* COMPLETE ... init _num_items to 0, _allocated_size to 0, and
      * set _items to a null pointer,
      */
 
-    explicit ArrayStack(int allocated_size){}
+    explicit ArrayStack(int allocated_size){
+      _num_items = 0;
+      _allocated_size = allocated_size;
+      _items = &_allocated_size;
+    }
     /* COMPLETE ... init _num_items to 0,
      * pre-allocate memory for an array of size allocated_size
      * and make _items point to it */
+     ArrayStack(const ArrayStack& another_a){
+       ArrayStack a;
+       a = another_a;
+     }
+
 
     // Destructor::
     ~ArrayStack() {

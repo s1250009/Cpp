@@ -17,5 +17,18 @@ int main(void) {
   for(i=1;i<11;i++){
     stack2.push(i);
   }
+  // Copy
+  ArrayStack stack3(stack1);
+  ArrayStack stack4 = stack2;
+
+  // Assignment
+  ArrayStack stack5;
+  stack5 = stack1;
+  ArrayStack stack6(10);
+  stack6 = stack6;
+
+  ArrayStack stack7 = std::move(stack5);
+  stack6 = std::move(stack2);
+
 return 0;
 }
