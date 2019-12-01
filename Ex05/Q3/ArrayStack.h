@@ -2,6 +2,7 @@
 
 #include <string>
 #include <iostream>
+#include <utility>
 
 #ifndef ARRAY_STACK_H
 #define ARRAY_STACK_H
@@ -50,7 +51,16 @@ public:
        a = another_a;
        std::cout << "Copy Constructor" << std::endl;
      }
+     ArrayStack(ArrayStack&& m){
+       ArrayStack b;
+       b = m;
 
+     }
+     ArrayStack&& operattor=(ArrayStack&& m){
+       ArrayStack c;
+       c = m;
+
+     }
 
     // Destructor::
     ~ArrayStack() {
