@@ -8,7 +8,6 @@ int main(void) {
   for (int i = 0; i < 40; ++i) {
     stack.push(i);
   }
-
   assert(stack.full() == false);
 
   int i = 39;

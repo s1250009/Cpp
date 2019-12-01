@@ -31,6 +31,8 @@ public:
  // acces the topmost element
  int top();
 
+ void call();
+
 private:
   int _max_size;
   int _top;
