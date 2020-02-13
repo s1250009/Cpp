@@ -7,7 +7,7 @@
             "label": "sample",
             "type": "shell",
             "command": "g++",
-            "args": ["-g", "sample.cpp"],
+            "args": ["-g", "sample.cpp", "&", "a.exe"],
             "group": {
                 "kind": "build",
                 "isDefault": true
